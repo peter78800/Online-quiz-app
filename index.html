@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="QuizNova - An interactive online quiz application for students."
+    >
+
+    <title>QuizNova | Online Quiz Application</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         MOBILE OVERLAY
+    ========================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+        hidden
+    ></div>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🧠
+            </div>
+
+            <div class="logo-text">
+
+                <h2>QuizNova</h2>
+
+                <p>Learn. Challenge. Achieve.</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-menu">
+
+            <button
+                class="menu-item active"
+                data-view="dashboard"
+                type="button"
+            >
+                🏠 Dashboard
+            </button>
+
+            <button
+                class="menu-item"
+                data-view="categories"
+                type="button"
+            >
+                📚 Quiz Categories
+            </button>
+
+            <button
+                class="menu-item"
+                data-view="history"
+                type="button"
+            >
+                📊 Quiz History
+            </button>
+
+            <button
+                class="menu-item"
+                data-view="leaderboard"
+                type="button"
+            >
+                🏆 Leaderboard
+            </button>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                type="button"
+            >
+                🌙 Dark Mode
+            </button>
+
+            <div class="student-info">
+
+                <p>Developed By</p>
+
+                <strong>Felix Peter</strong>
+
+                <small>2025/HND/SWD/010</small>
+
+                <small>SWD 417 Mini Project</small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div class="header-left">
+
+                <button
+                    class="mobile-menu-btn"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation"
+                    aria-controls="sidebar"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+
+                    <p>
+                        Challenge your knowledge and track your progress.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+
+                <span class="header-badge">
+                    SWD 417 Mini Project
+                </span>
+
+                <button
+                    class="btn btn-primary"
+                    data-open="categories"
+                    type="button"
+                >
+                    Start Quiz →
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             DASHBOARD SECTION
+        ====================================== -->
+
+        <section
+            class="view-section"
+            id="dashboardSection"
+        >
+
+            <!-- WELCOME BANNER -->
+
+            <div class="welcome-banner">
+
+                <div class="welcome-content">
+
+                    <span class="welcome-label">
+                        WELCOME TO QUIZNOVA
+                    </span>
+
+                    <h2>
+                        Test Your Knowledge.<br>
+                        Unlock Your Potential.
+                    </h2>
+
+                    <p>
+                        Explore exciting quizzes, challenge yourself,
+                        improve your knowledge, and monitor your
+                        learning progress.
+                    </p>
+
+                    <button
+                        class="btn btn-light"
+                        data-open="categories"
+                        type="button"
+                    >
+                        Explore Quizzes →
+                    </button>
+
+                </div>
+
+                <div class="welcome-illustration">
+                    🎯
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        📝
+                    </div>
+
+                    <div class="stat-content">
+
+                        <p>Total Attempts</p>
+
+                        <h3 id="totalAttempts">
+                            0
+                        </h3>
+
+                        <small>Quizzes completed</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        📈
+                    </div>
+
+                    <div class="stat-content">
+
+                        <p>Average Score</p>
+
+                        <h3 id="averageScore">
+                            0%
+                        </h3>
+
+                        <small>Overall performance</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon cyan">
+                        🏆
+                    </div>
+
+                    <div class="stat-content">
+
+                        <p>Best Score</p>
+
+                        <h3 id="bestScore">
+                            0%
+                        </h3>
+
+                        <small>Highest achievement</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🎯
+                    </div>
+
+                    <div class="stat-content">
+
+                        <p>Quizzes Passed</p>
+
+                        <h3 id="quizzesPassed">
+                            0
+                        </h3>
+
+                        <small>Scores of 50% or above</small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="section-heading">
+
+                <h2>Quick Actions</h2>
+
+                <p>
+                    Get started with your learning journey.
+                </p>
+
+            </div>
+
+
+            <div class="quick-actions-grid">
+
+                <div class="action-card">
+
+                    <div class="action-icon purple">
+                        📚
+                    </div>
+
+                    <h3>Explore Quizzes</h3>
+
+                    <p>
+                        Choose from different quiz categories
+                        and test your knowledge.
+                    </p>
+
+                    <button
+                        class="btn btn-primary"
+                        data-open="categories"
+                        type="button"
+                    >
+                        Browse Quizzes
+                    </button>
+
+                </div>
+
+
+                <div class="action-card">
+
+                    <div class="action-icon blue">
+                        📊
+                    </div>
+
+                    <h3>Quiz History</h3>
+
+                    <p>
+                        Review your previous quiz attempts,
+                        scores, and performance.
+                    </p>
+
+                    <button
+                        class="btn btn-outline"
+                        data-open="history"
+                        type="button"
+                    >
+                        View History
+                    </button>
+
+                </div>
+
+
+                <div class="action-card">
+
+                    <div class="action-icon cyan">
+                        🏆
+                    </div>
+
+                    <h3>Leaderboard</h3>
+
+                    <p>
+                        Discover your highest locally saved
+                        quiz scores and achievements.
+                    </p>
+
+                    <button
+                        class="btn btn-outline"
+                        data-open="leaderboard"
+                        type="button"
+                    >
+                        View Leaderboard
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT QUIZ RESULTS -->
+
+            <div class="section-heading section-heading-flex">
+
+                <div>
+
+                    <h2>Recent Quiz Results</h2>
+
+                    <p>
+                        Your latest completed quiz attempts.
+                    </p>
+
+                </div>
+
+                <button
+                    class="btn btn-outline"
+                    data-open="history"
+                    type="button"
+                >
+                    View All →
+                </button>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Quiz Category</th>
+
+                            <th>Score</th>
+
+                            <th>Percentage</th>
+
+                            <th>Result</th>
+
+                            <th>Date</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="recentResultsBody">
+
+                        <tr>
+
+                            <td colspan="5">
+                                No quiz attempts yet.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             QUIZ CATEGORIES SECTION
+        ====================================== -->
+
+        <section
+            class="view-section"
+            id="categoriesSection"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <h2>Choose a Quiz Category</h2>
+
+                <p>
+                    Select your preferred subject and
+                    start answering questions.
+                </p>
+
+            </div>
+
+
+            <div class="categories-grid">
+
+                <!-- COMPUTER SCIENCE -->
+
+                <article class="category-card">
+
+                    <div class="category-icon purple">
+                        💻
+                    </div>
+
+                    <h3>Computer Science</h3>
+
+                    <p>
+                        Test your knowledge of computers,
+                        programming, software, and technology.
+                    </p>
+
+                    <div class="category-meta">
+
+                        <span>📝 10 Questions</span>
+
+                        <span>⏱️ 10 Minutes</span>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        data-category="computer"
+                        type="button"
+                    >
+                        Start Quiz →
+                    </button>
+
+                </article>
+
+
+                <!-- MATHEMATICS -->
+
+                <article class="category-card">
+
+                    <div class="category-icon blue">
+                        🧮
+                    </div>
+
+                    <h3>Mathematics</h3>
+
+                    <p>
+                        Challenge yourself with arithmetic,
+                        algebra, and mathematical reasoning.
+                    </p>
+
+                    <div class="category-meta">
+
+                        <span>📝 10 Questions</span>
+
+                        <span>⏱️ 10 Minutes</span>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        data-category="mathematics"
+                        type="button"
+                    >
+                        Start Quiz →
+                    </button>
+
+                </article>
+
+
+                <!-- GENERAL KNOWLEDGE -->
+
+                <article class="category-card">
+
+                    <div class="category-icon cyan">
+                        🌍
+                    </div>
+
+                    <h3>General Knowledge</h3>
+
+                    <p>
+                        Explore questions about geography,
+                        history, and everyday knowledge.
+                    </p>
+
+                    <div class="category-meta">
+
+                        <span>📝 10 Questions</span>
+
+                        <span>⏱️ 10 Minutes</span>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        data-category="general"
+                        type="button"
+                    >
+                        Start Quiz →
+                    </button>
+
+                </article>
+
+
+                <!-- ENGLISH LANGUAGE -->
+
+                <article class="category-card">
+
+                    <div class="category-icon orange">
+                        📖
+                    </div>
+
+                    <h3>English Language</h3>
+
+                    <p>
+                        Improve your grammar, vocabulary,
+                        spelling, and sentence construction.
+                    </p>
+
+                    <div class="category-meta">
+
+                        <span>📝 10 Questions</span>
+
+                        <span>⏱️ 10 Minutes</span>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        data-category="english"
+                        type="button"
+                    >
+                        Start Quiz →
+                    </button>
+
+                </article>
+
+
+                <!-- SCIENCE -->
+
+                <article class="category-card">
+
+                    <div class="category-icon green">
+                        🔬
+                    </div>
+
+                    <h3>Science</h3>
+
+                    <p>
+                        Test your understanding of biology,
+                        chemistry, physics, and scientific facts.
+                    </p>
+
+                    <div class="category-meta">
+
+                        <span>📝 10 Questions</span>
+
+                        <span>⏱️ 10 Minutes</span>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        data-category="science"
+                        type="button"
+                    >
+                        Start Quiz →
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             QUIZ INSTRUCTIONS SECTION
+        ====================================== -->
+
+        <section
+            class="view-section"
+            id="instructionsSection"
+            hidden
+        >
+
+            <div class="instructions-card">
+
+                <div class="instructions-icon">
+                    📋
+                </div>
+
+                <h2 id="instructionTitle">
+                    Quiz Instructions
+                </h2>
+
+                <p>
+                    Read the instructions carefully
+                    before starting your quiz.
+                </p>
+
+
+                <div class="instructions-info">
+
+                    <div>
+
+                        <strong id="instructionQuestions">
+                            10
+                        </strong>
+
+                        <span>Questions</span>
+
+                    </div>
+
+                    <div>
+
+                        <strong id="instructionTime">
+                            10
+                        </strong>
+
+                        <span>Minutes</span>
+
+                    </div>
+
+                    <div>
+
+                        <strong>50%</strong>
+
+                        <span>Pass Mark</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="instructions-list">
+
+                    <h3>Quiz Rules</h3>
+
+                    <ul>
+
+                        <li>
+                            Each question has four answer options.
+                        </li>
+
+                        <li>
+                            Select one answer for each question.
+                        </li>
+
+                        <li>
+                            You can move between questions.
+                        </li>
+
+                        <li>
+                            You can change your answer before submission.
+                        </li>
+
+                        <li>
+                            The quiz has a time limit.
+                        </li>
+
+                        <li>
+                            The quiz will submit automatically
+                            when the timer reaches zero.
+                        </li>
+
+                        <li>
+                            Your score will be calculated automatically.
+                        </li>
+
+                        <li>
+                            You need at least 50% to pass.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        class="btn btn-outline"
+                        data-open="categories"
+                        type="button"
+                    >
+                        ← Back
+                    </button>
+
+                    <button
+                        class="btn btn-primary"
+                        id="beginQuizBtn"
+                        type="button"
+                    >
+                        Begin Quiz →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             ACTIVE QUIZ SECTION
+        ====================================== -->
+
+        <section
+            class="view-section"
+            id="quizSection"
+            hidden
+        >
+
+            <div class="quiz-container">
+
+                <!-- QUIZ HEADER -->
+
+                <div class="quiz-header">
+
+                    <div>
+
+                        <span class="quiz-label">
+                            QUIZ IN PROGRESS
+                        </span>
+
+                        <h2 id="activeQuizTitle">
+                            Computer Science Quiz
+                        </h2>
+
+                    </div>
+
+
+                    <div class="timer-box">
+
+                        <span>⏱️ Time Left</span>
+
+                        <strong id="quizTimer">
+                            10:00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+
+                <div class="quiz-progress-info">
+
+                    <span id="questionCounter">
+                        Question 1 of 10
+                    </span>
+
+                    <span id="quizProgressText">
+                        10%
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="quizProgressBar"
+                        style="width: 10%;"
+                    ></div>
+
+                </div>
+
+
+                <!-- QUESTION CARD -->
+
+                <div class="question-card">
+
+                    <span class="question-label">
+                        SELECT THE CORRECT ANSWER
+                    </span>
+
+                    <h3 id="questionText">
+                        Question will appear here.
+                    </h3>
+
+
+                    <div
+                        class="options-container"
+                        id="optionsContainer"
+                    >
+                        <!-- ANSWERS GENERATED BY JAVASCRIPT -->
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION NAVIGATION -->
+
+                <div class="quiz-navigation">
+
+                    <button
+                        class="btn btn-outline"
+                        id="previousQuestion"
+                        type="button"
+                    >
+                        ← Previous
+                    </button>
+
+                    <div id="questionNumbers" class="question-numbers">
+                        <!-- QUESTION BUTTONS -->
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        id="nextQuestion"
+                        type="button"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+
+                <!-- SUBMIT QUIZ -->
+
+                <div class="quiz-submit-area">
+
+                    <p>
+                        Make sure you have answered
+                        all questions before submitting.
+                    </p>
+
+                    <button
+                        class="btn btn-success"
+                        id="submitQuizBtn"
+                        type="button"
+                    >
+                        Submit Quiz
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             QUIZ RESULTS SECTION
+        ====================================== -->
+
+        <section
+            class="view-section"
+            id="resultsSection"
+            hidden
+        >
+
+            <div class="results-card">
+
+                <div class="results-icon" id="resultsIcon">
+                    🏆
+                </div>
+
+                <h2 id="resultsHeading">
+                    Quiz Completed!
+                </h2>
+
+                <p id="resultsMessage">
+                    Your quiz results are ready.
+                </p>
+
+
+                <div class="score-circle">
+
+                    <h2 id="resultPercentage">
+                        0%
+                    </h2>
+
+                    <span>Your Score</span>
+
+                </div>
+
+
+                <div class="result-stats">
+
+                    <div>
+
+                        <strong id="correctAnswers">
+                            0
+                        </strong>
+
+                        <span>Correct</span>
+
+                    </div>
+
+                    <div>
+
+                        <strong id="incorrectAnswers">
+                            0
+                        </strong>
+
+                        <span>Incorrect</span>
+
+                    </div>
+
+                    <div>
+
+                        <strong id="totalQuestionsResult">
+                            0
+                        </strong>
+
+                        <span>Total Questions</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-status" id="resultStatus">
+                    Result Pending
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        class="btn btn-outline"
+                        id="reviewAnswersBtn"
+                        type="button"
+                    >
+                        Review Answers
+                    </button>
+
+                    <button
+                        class="btn btn-primary"
+                        data-open="categories"
+                        type="button"
+                    >
+                        Try Another Quiz
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             ANSWER REVIEW SECTION
+        ====================================== -->
+
+        <section
+            class="view-section"
+            id="reviewSection"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <h2>Answer Review</h2>
+
+                <p>
+                    Review your answers and learn
+                    from your mistakes.
+                </p>
+
+            </div>
+
+
+            <div id="answerReviewContainer">
+                <!-- REVIEW GENERATED BY JAVASCRIPT -->
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    class="btn btn-primary"
+                    id="backToResultsBtn"
+                    type="button"
+                >
+                    ← Back to Results
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             QUIZ HISTORY SECTION
+        ====================================== -->
+
+        <section
+            class="view-section"
+            id="historySection"
+            hidden
+        >
+
+            <div class="section-heading section-heading-flex">
+
+                <div>
+
+                    <h2>Quiz History</h2>
+
+                    <p>
+                        View your previous quiz attempts
+                        and monitor your performance.
+                    </p>
+
+                </div>
+
+                <button
+                    class="btn btn-danger"
+                    id="clearHistoryBtn"
+                    type="button"
+                >
+                    Clear History
+                </button>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Quiz Category</th>
+
+                            <th>Score</th>
+
+                            <th>Percentage</th>
+
+                            <th>Result</th>
+
+                            <th>Date</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="historyTableBody">
+                        <!-- HISTORY GENERATED BY JAVASCRIPT -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                class="empty-state"
+                id="historyEmpty"
+                hidden
+            >
+
+                <div class="empty-icon">
+                    📊
+                </div>
+
+                <h3>No Quiz History Yet</h3>
+
+                <p>
+                    Complete a quiz to see your
+                    previous results here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             LEADERBOARD SECTION
+        ====================================== -->
+
+        <section
+            class="view-section"
+            id="leaderboardSection"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <h2>🏆 Quiz Leaderboard</h2>
+
+                <p>
+                    Your highest quiz scores saved
+                    in this browser.
+                </p>
+
+            </div>
+
+
+            <div class="leaderboard-banner">
+
+                <div>
+
+                    <h2>Keep Learning. Keep Improving.</h2>
+
+                    <p>
+                        Every quiz is an opportunity
+                        to improve your knowledge.
+                    </p>
+
+                </div>
+
+                <div class="leaderboard-illustration">
+                    🏆
+                </div>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Rank</th>
+
+                            <th>Quiz Category</th>
+
+                            <th>Score</th>
+
+                            <th>Percentage</th>
+
+                            <th>Date</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="leaderboardTableBody">
+                        <!-- LEADERBOARD GENERATED BY JAVASCRIPT -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                class="empty-state"
+                id="leaderboardEmpty"
+                hidden
+            >
+
+                <div class="empty-icon">
+                    🏆
+                </div>
+
+                <h3>No Leaderboard Results Yet</h3>
+
+                <p>
+                    Complete quizzes to build
+                    your leaderboard.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="footer">
+
+            <p>
+                © 2026 QuizNova.
+                All Rights Reserved.
+            </p>
+
+            <p>
+                Developed by
+                <strong>Felix Peter</strong>
+                |
+                2025/HND/SWD/010
+                |
+                SWD 417
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ==========================================
+         TOAST NOTIFICATION
+    ========================================== -->
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
